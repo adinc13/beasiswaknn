@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Data Beasiswa{% endblock %}
+
+{% load static %}
+
+{% block content %}
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Data Beasiswa</h3>
+    </div>
+  </div>
+  <div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="table-responsive">
+              <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                  <tr class="headings">
+                    <th class="column-title">NAMA</th>
+                    <th class="column-title">KTP</th>
+                    <th class="column-title">KK</th>
+                    <th class="column-title">KELAS</th>
+                    <th class="column-title">PKH</th>
+                    <th class="column-title">KPS</th>
+                    <th class="column-title">SKTM</th>
+                    <th class="column-title">PANTI</th>
+                    <th class="column-title">R. LISTRIK</th>
+                    <th class="column-title">RANKING</th>
+                    <th class="column-title">BEASISWA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for siswa in data_siswa %}
+                    <tr class="even pointer">
+                      <td>{{ siswa.name }}</td>
+                      <td>{% if siswa.x1 == 1 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x2 == 1 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x3 == 1 %}3{% elif siswa.x3 == 2 %}2{% elif siswa.x3 == 3 %}1{% endif %}</td>
+                      <td>{% if siswa.x4 == 2 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x5 == 4 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x6 == 4 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x7 == 4 %}Ada{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x8 == 1 %}2200 VA{% elif siswa.x8 == 2 %}1300 VA{% elif siswa.x8 == 3 %}900 VA{% elif siswa.x8 == 4 %}450 VA{% else %}Tidak Ada{% endif %}</td>
+                      <td>{% if siswa.x9 == 1 %}3{% elif siswa.x9 == 2 %}2{% elif siswa.x9 == 3 %}1{% else %}> 3{% endif %}</td>
+                      <td>{% if siswa.beasiswa %}Ya{% else %}Tidak{% endif %}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% if is_paginated %}
+                <ul class="pagination pull-right">
+                  {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                  {% endif %}
+                  {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="left_col scroll-view">
+  <div class="navbar nav_title" style="border: 0;">
+    <a href="#" class="site_title"><img src="{% static 'images/AR_LOGO.png' %}" height="30px" style="margin-right: 5px;">
+    <span>Beasiswa K-NN</span></a>
+  </div>
+  <div class="clearfix"></div>
+  <!-- menu profile quick info -->
+  <div class="profile clearfix">
+    <div class="profile_pic">
+        <img src="{% static 'images/pp.jpg' %}" alt="" class="img-circle profile_img">
+    </div>
+    <div class="profile_info">
+      <span style="line-height: 24px;">Adi Nurcahyo<br>Ruly Kartika</span>
+    </div>
+  </div>
+  <!-- /menu profile quick info -->
+  <br/>
+  <!-- sidebar menu -->
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <ul class="nav side-menu">
+        <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> Home <span class="fa"></span></a></li>
+        <li><a href="{% url 'input_data' %}"><i class="fa fa-user"></i> Input Data Baru <span class="fa"></span></a></li>
+{#        <li><a href="{% url 'data_beasiswa' %}"><i class="fa fa-users"></i> Daftar Beasiswa <span class="fa"></span></a></li>#}
+        <li><a href="{% url 'data_sample' %}"><i class="fa fa-users"></i> Data Beasiswa <span class="fa"></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /sidebar menu -->
+</div>
